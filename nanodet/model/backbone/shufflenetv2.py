@@ -84,7 +84,8 @@ class ShuffleNetV2(nn.Module):
                  out_stages=(2, 3, 4),
                  with_last_conv=False,
                  kernal_size=3,
-                 activation='ReLU'):
+                 activation='ReLU',
+                 pretrain=True):
         super(ShuffleNetV2, self).__init__()
         print('model size is ', model_size)
 
@@ -127,13 +128,13 @@ class ShuffleNetV2(nn.Module):
             input_channels = output_channels
         output_channels = self._stage_out_channels[-1]
         if self.with_last_conv:
-            self.conv5 = nn.Sequential(
+            conv5 = nn.Sequential(
                 nn.Conv2d(input_channels, output_channels, 1, 1, 0, bias=False),
                 nn.BatchNorm2d(output_channels),
                 act_layers(activation),
             )
-            self.stage4.add_module('conv5', self.conv5)
-        self._initialize_weights()
+            self.stage4.add_module('conv5', conv5)
+        self._initialize_weights(pretrain)
 
     def forward(self, x):
         x = self.conv1(x)

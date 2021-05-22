@@ -6,7 +6,7 @@
 #ifndef NANODET_H
 #define NANODET_H
 
-#include "ncnn/net.h"
+#include "net.h"
 #include "YoloV5.h"
 
 typedef struct HeadInfo
@@ -14,7 +14,7 @@ typedef struct HeadInfo
     std::string cls_layer;
     std::string dis_layer;
     int stride;
-};
+} HeadInfo;
 
 
 class NanoDet{
@@ -46,9 +46,9 @@ private:
     int reg_max = 7;
     std::vector<HeadInfo> heads_info{
         // cls_pred|dis_pred|stride
-            {"792", "795",    8},
-            {"814", "817",   16},
-            {"836", "839",   32},
+        {"cls_pred_stride_8", "dis_pred_stride_8", 8},
+        {"cls_pred_stride_16", "dis_pred_stride_16", 16},
+        {"cls_pred_stride_32", "dis_pred_stride_32", 32},
     };
 
 public:

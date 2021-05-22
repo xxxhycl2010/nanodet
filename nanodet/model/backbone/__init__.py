@@ -3,6 +3,9 @@ from .resnet import ResNet
 from .ghostnet import GhostNet
 from .shufflenetv2 import ShuffleNetV2
 from .mobilenetv2 import MobileNetV2
+from .efficientnet_lite import EfficientNetLite
+from .custom_csp import CustomCspNet
+from .repvgg import RepVGG
 
 
 def build_backbone(cfg):
@@ -16,6 +19,12 @@ def build_backbone(cfg):
         return GhostNet(**backbone_cfg)
     elif name == 'MobileNetV2':
         return MobileNetV2(**backbone_cfg)
+    elif name == 'EfficientNetLite':
+        return EfficientNetLite(**backbone_cfg)
+    elif name == 'CustomCspNet':
+        return CustomCspNet(**backbone_cfg)
+    elif name == 'RepVGG':
+        return RepVGG(**backbone_cfg)
     else:
         raise NotImplementedError
 

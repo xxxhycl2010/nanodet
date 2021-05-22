@@ -25,11 +25,9 @@ Build NCNN following this tutorial: [Build for Windows x64 using VS2017](https:/
 
 ### Step5.
 
-Modify CMakeLists.txt to your environment settings.
+Add `ncnn_DIR` = `YOUR_NCNN_PATH/build/install/lib/cmake/ncnn` to system environment variables.
 
-Build project
-
-Open x64 Native Tools Command Prompt for VS 2019 or 2017
+Build project: Open x64 Native Tools Command Prompt for VS 2019 or 2017
 
 ``` cmd
 cd <this-folder>
@@ -58,7 +56,11 @@ Build NCNN following this tutorial: [Build for Linux / NVIDIA Jetson / Raspberry
 
 ### Step4.
 
-Modify CMakeLists.txt to your environment settings.
+Set environment variables. Run:
+
+``` shell script
+export ncnn_DIR=YOUR_NCNN_PATH/build/install/lib/cmake/ncnn
+```
 
 Build project
 
@@ -73,7 +75,7 @@ make
 # Run demo
 
 Download NanoDet ncnn model.
-* [NanoDet ncnn model download link](https://github.com/RangiLyu/nanodet/releases/download/v0.0.1/nanodet_ncnn_model.zip)
+* [NanoDet ncnn model download link](https://github.com/RangiLyu/nanodet/releases/download/v0.3.0/nanodet_m_ncnn_model.zip)
 
 Copy nanodet_m.param and nanodet_m.bin to demo program folder.
 
